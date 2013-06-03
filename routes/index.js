@@ -6,9 +6,9 @@ exports.index = function(req, res){
 
 exports.saveUrl = function(req, res){
   var url = req.body.url;
-  var key = map.addUrl(url);
+  var short = map.addUrl(url);
   console.dir(map.getMap());
-  res.render('generate',{title: 'Encurtador de URL', url_new: key} );
+  res.render('index',{title: 'Encurtador de URL', url_new: short, generated:true, map: map.getMap()} );
 };
 
 exports.redirect = function(req,res){
@@ -16,7 +16,7 @@ exports.redirect = function(req,res){
     var originalUrl = map.getUrl(key);
     console.log("a url é "+originalUrl);
     res.writeHead(302, {
-        'Location':  "http://"+originalUrl
+        'Location':  originalUrl
     });
     res.end();
 };

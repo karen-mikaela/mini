@@ -13,7 +13,11 @@ block content
       p.buttons
         input(type="submit", value="Gerar")
 
+  p
+  - if (generated)
+    a(href='/'+url_new, title=url_new) http://localhost:3000/#{url_new}
+  
   h2 Listas de urls encurtadas
   ul#urls
     each url ,key in map
-      li #{key} #{url}
+      li #{url.short} #{url.url}
