@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1= title
+  h1.logo= title
 
   form(method="post",action= "/generate")
     fieldset
@@ -11,7 +11,7 @@ block content
         input(type="text", name="url")
 
       p.buttons
-        input(type="submit", value="Gerar")
+        input(type="submit", value="Encurtar")
 
   p
   - if (generated)

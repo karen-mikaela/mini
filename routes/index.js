@@ -1,14 +1,14 @@
 var map = require('../lib/map');
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Encurtador de URL' , map: map.getMap()});
+  res.render('index', { title: 'MINI - Encurtador de URL' , map: map.getMap()});
 };
 
 exports.saveUrl = function(req, res){
   var url = req.body.url;
   var short = map.addUrl(url);
   console.dir(map.getMap());
-  res.render('index',{title: 'Encurtador de URL', url_new: short, generated:true, map: map.getMap()} );
+  res.render('index',{title: 'MINI - Encurtador de URL', url_new: short, generated:true, map: map.getMap()} );
 };
 
 exports.redirect = function(req,res){
