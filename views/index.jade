@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1.logo= title
-
+ 
   form(method="post",action= "/generate")
     fieldset
       legend Insira uma url
@@ -14,10 +14,11 @@ block content
         input(type="submit", value="Encurtar")
 
   p
-  - if (generated)
-    a(href='/'+url_new, title=url_new) http://localhost:3000/#{url_new}
-  
+  if (generated)
+    a(href='/'+url_new, title=url_new) http://mini.mycode.cc/#{url_new}
   h2 Listas de urls encurtadas
   ul#urls
     each url ,key in map
       li #{url.short} #{url.url}
+
+      
