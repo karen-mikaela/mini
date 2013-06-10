@@ -20,7 +20,20 @@ block content
     a(href='/'+url_new, title=url_new) #{hostname}#{url_new}
   h2 Ultimas urls encurtadas
   ul#urls
-    each short in map
-      li #{hostname}#{short.short} -  #{short.url}
+    table
+     // thead
+        tr
+          th Encurtada
+          th Original
+      tbody
+        each short in map
+          tr
+            td
+              a(href= hostname+short.short, title=hostname+short.short ) #{hostname}#{short.short}
+            td
+              span -
+            td
+              a(href= hostname+short.url, title=hostname+short.url ) #{hostname}#{short.url}
+
 
       
