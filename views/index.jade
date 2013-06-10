@@ -17,10 +17,10 @@ block content
 
   p
   if (generated)
-    a(href='/'+url_new, title=url_new) http://mini.mycode.cc/#{url_new}
-  h2 Listas de urls encurtadas
+    a(href='/'+url_new, title=url_new) #{hostname}#{url_new}
+  h2 Ultimas urls encurtadas
   ul#urls
-    each url ,key in map
-      li #{url.short} #{url.url}
+    each short in map
+      li #{hostname}#{short.short} -  #{short.url}
 
       
