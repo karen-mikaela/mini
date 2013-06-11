@@ -37,23 +37,26 @@ h1.logo {
   border-collapse: collapse;
   width: 100%;
   font-size: 12px;
-  border: #ddd solid 1px;
+}
+
+.border {
+    border: #ddd solid 1px;
 }
 
 .urls tbody {
   
 }
 
-.urls tr:nth-child(even)  {
+.urls tr:nth-child(even) {
   background-color: #eee;
 }
-.urls a:hover{
+.urls a.short:hover, .urls a.url:hover {
   color: #00B7FF;
 }
-.urls a:visited{
-  color: #000;
-}
-.urls a:link{
+.urls a.short, .urls a.url {
   color: #555;
 }
-
+.urls a.short {
+  font-weight: bold;
+  line-height: 2;
+}
