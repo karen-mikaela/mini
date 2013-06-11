@@ -18,22 +18,17 @@ block content
   p
   if (generated)
     a(href='/'+url_new, title=url_new) #{hostname}#{url_new}
-  h2 Ultimas urls encurtadas
-  ul#urls
+  div.urls
     table
-     // thead
+      thead
         tr
-          th Encurtada
-          th Original
+          th As 10 Ultimas Urls encurtadas
       tbody
         each short in map
           tr
-            td
+            td(width="25%")
               a(href= hostname+short.short, title=hostname+short.short ) #{hostname}#{short.short}
-            td
-              span -
-            td
+              br
               a(href= short.url, title=short.url ) #{short.url}
 
 
-      
