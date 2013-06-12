@@ -1,6 +1,7 @@
 var map = require('../lib/map');
 var MiniProvider = require('../lib/miniProvider').MiniProvider;
 var miniProvider = new MiniProvider('localhost', 27017);
+//var hostname =  "http://localhost:3000/";
 var hostname =  "http://mini.mycode.cc/";
 
 exports.index = function(req, res){  
@@ -44,13 +45,20 @@ exports.redirect = function(req,res){
     var key = map.getUrl(req.params.key);
     miniProvider.findById( key, function(error,short){ 
       if(error){
-        console.dir(error);
+        console.dir(error);        
       } else {
-        console.log("a url é "+short.url);
-        res.writeHead(302, {
+        if(short == null){
+          console.log("ERRO 404");
+          res.render('404', { 
+               title: 'MINI - Encurtador de URL',
+          });
+        } else {
+          console.log("a url é "+short.url);
+          res.writeHead(302, {
             'Location':  short.url
-        });
-        res.end();
+          });
+          res.end();  
+        }        
       }
     });    
 };
