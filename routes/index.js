@@ -16,34 +16,64 @@ exports.index = function(req, res){
 
 exports.saveUrl = function(req, res){
   var url = req.body.url;
-  var short = map.addUrl(url);
-  miniProvider.save( short, function(error,shortSaved){ 
-      var urls = [];  
-      if(error){
-        console.dir(error);
-      } else {
-        miniProvider.findAll( function(error,docs){
-          if(error){
-            console.dir(error);
+  var _short = map.addUrl(url);
 
-          } else {
-              res.render('index', { 
-               title: 'MINI - Encurtador de URL',
-               url_new: shortSaved.short,
-               generated:true,
-               hostname:hostname,
-               map:docs            
+  miniProvider.findByUrl(_short.url, function(error, items){
+    console.log("findByUrl "+_short.url);
+    console.log(items.length);
+    if(error) {
+      console.dir(error);
+    } else {
+      if(items.length == 0) {
+        console.log("salvar "+_short.url);
+        //save 
+        miniProvider.save(_short, function(error, shortSaved) {
+            var urls = [];
+            if(error){
+              console.dir(error);
+            } else {
+              console.log("salvo "+shortSaved.short);
+              miniProvider.findAll( function(error,docs){
+                if(error){
+                  console.dir(error);
+                } else {
+                    res.render('index', { 
+                     title: 'MINI - Encurtador de URL',
+                     url_new: shortSaved.short,
+                     generated:true,
+                     hostname:hostname,
+                     map:docs
+                    });
+                }
+                
               });
-          }
-          
+            }
+        });
+      } else {
+        //return
+        console.log("retona  "+items[0].url);
+        miniProvider.findAll( function(error,docs){
+                if(error){
+                  console.dir(error);
+                } else {
+                    res.render('index', { 
+                     title: 'MINI - Encurtador de URL',
+                     url_new: items[0].short,
+                     generated:true,
+                     hostname:hostname,
+                     map:docs
+                    });
+                }
+                
         });
       }
+    }
   });
 };
 
 exports.redirect = function(req,res){
     var key = map.getUrl(req.params.key);
-    miniProvider.findById( key, function(error,short){ 
+    miniProvider.findById( key, function(error,short){
       if(error){
         console.dir(error);        
       } else {

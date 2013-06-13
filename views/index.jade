@@ -15,21 +15,21 @@ block content
       p.buttons
         input(type="submit", value="Encurtar")
   p
-  if (generated)
+  if(generated)
     p 
       a(href='/'+url_new, title=url_new) #{hostname}#{url_new}
-
-  div.urls
-    table(class="border")
-      thead
-        tr
-          th As 10 Ultimas Urls encurtadas
-      tbody
-        each short in map
+  if(map.length > 0)
+    div.urls
+      table(class="border")
+        thead
           tr
-            td(width="25%")
-              a.short(href= hostname+short.short, title=hostname+short.short ,target='_blank') #{hostname}#{short.short}
-              br
-              a.url(href= short.url, title=short.url ,target='_blank') #{short.url}
+            th As 10 Ultimas Urls encurtadas
+        tbody
+          each short in map
+            tr
+              td(width="25%")
+                a.short(href= hostname+short.short, title=hostname+short.short ,target='_blank') #{hostname}#{short.short}
+                br
+                a.url(href= short.url, title=short.url ,target='_blank') #{short.url}
 
 
