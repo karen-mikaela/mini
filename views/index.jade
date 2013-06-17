@@ -3,14 +3,44 @@ extends layout
 link(rel='icon', href='/images/logo.ico')
 
 block content
+  script
+    $(document).ready(function(){
+      $('#form_url').validate({
+        rules: {
+          url: {
+            required: true,
+            email_valid: true
+          }
+        }, //end rules
+
+        messages: {
+          url: {
+            required: 'Por favor, insira a url a ser encurtada.',
+            email_valid: 'Está url é invalida.'
+          }
+        }, //end messages
+        errorPlacement: function(error, element) {
+          if (element.is(':radio') || element.is(':checkbox')) {
+            error.appendTo(element.parent());
+          } else {
+            error.insertAfter(element);
+          } //end errorPlacement
+        }
+      }); //end validate
+    }); //end ready
+    jQuery.validator.addMethod("email_valid", function(val, element) {
+      var urlregex = new RegExp("^(http:\/\/www.|https:\/\/www.|ftp:\/\/www.|www.|http:\/\/){1}([0-9A-Za-z]+\.)");
+      return urlregex.test(val);
+    }, "coloca a url");
+
   h1.logo= title
  
-  form(method="post",action= "/generate")
+  form(id="form_url", method="post",action= "/generate")
     fieldset(class="border")
       legend Insira uma Url
       p
-        label(for="url") Url:
-        input(type="text", name="url")
+        label(for="url",id="label_url") Url:
+        input(type="text", name="url", id="url",value="http://")
 
       p.buttons
         input(type="submit", value="Encurtar")

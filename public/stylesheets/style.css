@@ -60,3 +60,42 @@ h1.logo {
   font-weight: bold;
   line-height: 2;
 }
+h1.not_found {
+  color: #00B7FF;
+}
+p.not_found {
+  color: #aaa;
+  font-size: 16px;
+}
+.not_found{
+  font-family: arial;
+}
+.not_found a {
+  text-decoration: none;
+}
+#form_url .indent label.error {
+  margin-left: 0;
+}
+
+#form_url label.error {
+  font-size: 0.8em;
+  color: #F00;
+  font-weight: bold;
+  display: block;
+  height: 15;
+  padding-top: 8px;
+}
+
+#form_url input.error, #form_url select.error {
+  background: #FFA9B8;
+  border: 1px solid red;
+}
+
+#form_url input#url  {
+  padding: 5px;
+  width: 250px;
+}
+#form_url label#label_url  {
+  padding: 5px;
+  width: 20px;
+}

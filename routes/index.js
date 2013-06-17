@@ -81,6 +81,7 @@ exports.redirect = function(req,res){
           console.log("ERRO 404");
           res.render('404', { 
                title: 'MINI - Encurtador de URL',
+               hostname:hostname
           });
         } else {
           console.log("a url é "+short.url);
