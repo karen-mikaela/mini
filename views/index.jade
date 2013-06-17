@@ -9,14 +9,14 @@ block content
         rules: {
           url: {
             required: true,
-            email_valid: true
+            url: true
           }
         }, //end rules
 
         messages: {
           url: {
             required: 'Por favor, insira a url a ser encurtada.',
-            email_valid: 'Está url é invalida.'
+            url: 'Está url é invalida.'
           }
         }, //end messages
         errorPlacement: function(error, element) {
@@ -29,7 +29,7 @@ block content
       }); //end validate
     }); //end ready
     jQuery.validator.addMethod("email_valid", function(val, element) {
-      var urlregex = new RegExp("^(http:\/\/www.|https:\/\/www.|ftp:\/\/www.|www.|http:\/\/){1}([0-9A-Za-z]+\.)");
+      var urlregex = new RegExp("/^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/");
       return urlregex.test(val);
     }, "coloca a url");
 
