@@ -99,3 +99,13 @@ p.not_found {
   padding: 5px;
   width: 20px;
 }
+.generated {
+  padding: 20px;
+  width: 300px;
+  background: #eee;
+}
+.generated span {
+  background: #ccc;
+  margin-left: 37px;
+  padding-bottom: 10px;
+}

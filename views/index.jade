@@ -46,8 +46,9 @@ block content
         input(type="submit", value="Encurtar")
   p
   if(generated)
-    p 
+    p.generated 
       a(href='/'+url_new, title=url_new) #{hostname}#{url_new}
+      span Copiar
   if(map.length > 0)
     div.urls
       table(class="border")
