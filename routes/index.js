@@ -5,7 +5,7 @@ var miniProvider = new MiniProvider('localhost', 27017);
 var hostname =  "http://mini.mycode.cc/";
 
 exports.index = function(req, res){  
-  miniProvider.findAll( function(error,docs){
+   miniProvider.findAll( function(error,docs){
     res.render('index', { 
         title: 'MINI - Encurtador de URL',
         map:docs,

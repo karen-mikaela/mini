@@ -3,6 +3,7 @@ extends layout
 link(rel='icon', href='/images/logo.ico')
 
 block content
+  script(src="/javascripts/ZeroClipboard.js");
   script
     $(document).ready(function(){
       $('#form_url').validate({
@@ -27,12 +28,25 @@ block content
           } //end errorPlacement
         }
       }); //end validate
+
+      var clip = new ZeroClipboard( document.getElementById("copy"), {
+        moviePath: "/javascripts/ZeroClipboard.swf"
+        } );
+
+      clip.on( 'load', function(client) {
+       //alert( "movie is loaded" );
+      } );
+      clip.on( 'complete', function(client, args) {
+        //this.style.display = ''; // "this" is the element that was clicked
+        //alert("Copied text to clipboard: " + document.getElementById("url_new_copy").text );
+      } );
+
     }); //end ready
     jQuery.validator.addMethod("email_valid", function(val, element) {
       var urlregex = new RegExp("/^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/");
       return urlregex.test(val);
     }, "coloca a url");
-
+   
   h1.logo= title
  
   form(id="form_url", method="post",action= "/generate")
@@ -47,8 +61,10 @@ block content
   p
   if(generated)
     p.generated 
-      a(href='/'+url_new, title=url_new) #{hostname}#{url_new}
-      span Copiar
+      a(id="url_new_copy", href='/'+url_new, title=url_new) #{hostname}#{url_new}
+      span
+        //a(id="copy", href='#', title= "copiar") Copiar
+        input(id="copy", type="button", data-clipboard-text=hostname+url_new, title="Copiar",value="copiar")
   if(map.length > 0)
     div.urls
       table(class="border")
