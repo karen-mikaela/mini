@@ -62,9 +62,7 @@ block content
   if(generated)
     p.generated 
       a(id="url_new_copy", href='/'+url_new, title=url_new) #{hostname}#{url_new}
-      span
-        //a(id="copy", href='#', title= "copiar") Copiar
-        input(id="copy", type="button", data-clipboard-text=hostname+url_new, title="Copiar",value="copiar")
+      input(id="copy", type="button", data-clipboard-text=hostname+url_new, title="Copiar",value="Copiar")
   if(map.length > 0)
     div.urls
       table(class="border")

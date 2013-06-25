@@ -104,7 +104,13 @@ p.not_found {
   width: 300px;
   background: #eee;
 }
-.generated span {
-  margin-left: 37px;
-  padding-bottom: 10px;
+#copy{
+  border-radius: 5px 5px 5px 5px;
+  border: none;
+  background: #ccc;
+  height: 25px;
+  margin-left: 20px;
+  padding: 0;
+  width: 50px;
+  font-weight: bold;
 }
