@@ -5,6 +5,7 @@ body {
 
 a {
   color: #00B7FF;
+  text-decoration: none;
 }
 .logo {
   background-image: url('/../images/logo.jpeg');
@@ -107,10 +108,21 @@ p.not_found {
 #copy{
   border-radius: 5px 5px 5px 5px;
   border: none;
-  background: #ccc;
-  height: 25px;
+  background: #00B7FF;
+  height: 30px;
   margin-left: 20px;
   padding: 0;
-  width: 50px;
+  width: 65px;
   font-weight: bold;
+}
+
+p.buttons input{
+  background: #555;
+  color: #CCC;
+  border-radius: 5px 5px 5px 5px;
+  border: none;
+  height: 30px;
+  padding: 0;
+  font-weight: bold;
+  width: 75px;
 }

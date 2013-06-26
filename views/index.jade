@@ -29,7 +29,7 @@ block content
         }
       }); //end validate
 
-      var clip = new ZeroClipboard( document.getElementById("copy"), {
+      var clip = new ZeroClipboard( $("#copy"), {
         moviePath: "/javascripts/ZeroClipboard.swf"
         } );
 
@@ -37,6 +37,7 @@ block content
        //alert( "movie is loaded" );
       } );
       clip.on( 'complete', function(client, args) {
+        //$("#copy").css('background','purple');
         //this.style.display = ''; // "this" is the element that was clicked
         //alert("Copied text to clipboard: " + document.getElementById("url_new_copy").text );
       } );
