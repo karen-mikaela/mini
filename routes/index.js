@@ -7,7 +7,7 @@ var hostname =  "http://mini.mycode.cc/";
 exports.index = function(req, res){  
    miniProvider.findAll( function(error,docs){
     res.render('index', { 
-        title: 'MINI - Encurtador de URL',
+        title: 'MINI',
         map:docs,
         hostname:hostname
     });
@@ -38,7 +38,7 @@ exports.saveUrl = function(req, res){
                   console.dir(error);
                 } else {
                     res.render('index', { 
-                     title: 'MINI - Encurtador de URL',
+                     title: 'MINI',
                      url_new: shortSaved.short,
                      generated:true,
                      hostname:hostname,
@@ -57,7 +57,7 @@ exports.saveUrl = function(req, res){
                   console.dir(error);
                 } else {
                     res.render('index', { 
-                     title: 'MINI - Encurtador de URL',
+                     title: 'MINI',
                      url_new: items[0].short,
                      generated:true,
                      hostname:hostname,
@@ -80,7 +80,7 @@ exports.redirect = function(req,res){
         if(short == null){
           console.log("ERRO 404");
           res.render('404', { 
-               title: 'MINI - Encurtador de URL',
+               title: 'MINI',
                hostname:hostname
           });
         } else {

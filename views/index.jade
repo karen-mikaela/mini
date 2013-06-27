@@ -24,7 +24,7 @@ block content
           if (element.is(':radio') || element.is(':checkbox')) {
             error.appendTo(element.parent());
           } else {
-            error.insertAfter(element);
+            error.insertAfter($("#label_error"));
           } //end errorPlacement
         }
       }); //end validate
@@ -49,21 +49,20 @@ block content
     }, "coloca a url");
    
   h1.logo= title
+    span Encurtador de URL
  
   form(id="form_url", method="post",action= "/generate")
     fieldset(class="border")
-      legend Insira uma Url
+      legend Cole aqui a url que deseja encurtar 
       p
-        label(for="url",id="label_url") Url:
-        input(type="text", name="url", id="url",value="http://")
-
-      p.buttons
-        input(type="submit", value="Encurtar")
+        input(class="text", type="text", name="url", id="url",value="http://")
+        input(class="button", type="submit", value="Encurtar")
+        span(id="label_error")
   p
   if(generated)
     p.generated 
       a(id="url_new_copy", href='/'+url_new, title=url_new) #{hostname}#{url_new}
-      input(id="copy", type="button", data-clipboard-text=hostname+url_new, title="Copiar",value="Copiar")
+      input(class="button", id="copy", type="button", data-clipboard-text=hostname+url_new, title="Copiar",value="Copiar")
   if(map.length > 0)
     div.urls
       table(class="border")
